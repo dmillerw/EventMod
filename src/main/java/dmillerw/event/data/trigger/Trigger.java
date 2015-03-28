@@ -1,15 +1,19 @@
 package dmillerw.event.data.trigger;
 
+import com.google.gson.JsonObject;
+import dmillerw.event.data.lore.Lore;
+import dmillerw.event.data.lore.LoreRegistry;
+
 /**
  * @author dmillerw
  */
-public class Trigger {
+public abstract class Trigger {
 
-    public final String tag;
+    private String loreIdent; // Set upon creation
 
-    public String loreIdent; // Set upon creation
-
-    public Trigger(String tag) {
-        this.tag = tag;
+    public final Lore getLore() {
+        return LoreRegistry.getLore(loreIdent);
     }
+
+    public abstract void acceptData(JsonObject object);
 }

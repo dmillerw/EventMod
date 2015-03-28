@@ -1,14 +1,27 @@
 package dmillerw.event.data.trigger.impl;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import dmillerw.event.data.trigger.PassiveTrigger;
+import net.minecraft.util.Vec3;
 
 /**
  * @author dmillerw
  */
 public class TriggerRange extends PassiveTrigger {
 
-    protected TriggerRange() {
-        super("RANGE", Type.PLAYER);
+    public Vec3 coordinate;
+    public float range;
+
+    public TriggerRange() {
+        super(Type.PLAYER);
+    }
+
+    @Override
+    public void acceptData(JsonObject object) {
+        JsonArray array = object.getAsJsonArray("coordinate");
+        coordinate = Vec3.createVectorHelper(array.get(0).getAsDouble(), array.get(1).getAsDouble(), array.get(2).getAsDouble());
+        range = object.get("range").getAsFloat();
     }
 
     @Override

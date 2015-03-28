@@ -8,8 +8,7 @@ public abstract class PassiveTrigger extends Trigger {
 
     public final Type type;
 
-    protected PassiveTrigger(String tag, Type type) {
-        super(tag);
+    protected PassiveTrigger(Type type) {
         this.type = type;
     }
 
