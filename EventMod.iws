@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27648c78-41bb-449a-954f-7ad9cce35e16" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/lib/ExtensionFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/lore/Lore.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/lore/LoreRegistry.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/client/SoundHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/json/TriggerDeserializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/TriggerRegistry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventMod.ipr" afterPath="$PROJECT_DIR$/EventMod.ipr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventMod.iws" afterPath="$PROJECT_DIR$/EventMod.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dmillerw/event/EventMod.java" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/EventMod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/EventTrigger.java" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/EventTrigger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/PassiveTrigger.java" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/PassiveTrigger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/Trigger.java" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/Trigger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/impl/TriggerItemDropped.java" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/impl/TriggerItemDropped.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/impl/TriggerRange.java" afterPath="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/impl/TriggerRange.java" />
     </list>
     <ignored path="EventMod.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -177,11 +165,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Trigger.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Trigger.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/Trigger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35564855" vertical-offset="0" max-vertical-offset="717">
-              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#303#304#0" expanded="true" />
@@ -191,15 +179,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventTrigger.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/EventTrigger.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-              <folding>
-                <element signature="e#197#198#0" expanded="true" />
-                <element signature="e#231#232#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.34393063" vertical-offset="0" max-vertical-offset="692">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -230,6 +215,7 @@
         <option value="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/impl/TriggerRange.java" />
         <option value="$PROJECT_DIR$/src/main/java/dmillerw/event/data/lore/LoreRegistry.java" />
         <option value="$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/Trigger.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -971,12 +957,19 @@
       <created>1427510289398</created>
       <option name="number" value="Default" />
       <updated>1427510289398</updated>
-      <workItem from="1427510290124" duration="3453000" />
+      <workItem from="1427510290124" duration="3606000" />
     </task>
+    <task id="LOCAL-00001" summary="Work. Core lore/trigger framework done">
+      <created>1427513760814</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1427513760814</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3453000" />
+    <option name="totallyTimeSpent" value="3606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -997,7 +990,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52567565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5250643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1028,6 +1021,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Work. Core lore/trigger framework done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work. Core lore/trigger framework done" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1210,13 +1205,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dmillerw/event/data/trigger/Trigger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35564855" vertical-offset="0" max-vertical-offset="717">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#303#304#0" expanded="true" />
             <element signature="e#357#358#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34393063" vertical-offset="0" max-vertical-offset="692">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
