@@ -21,16 +21,19 @@ public abstract class Trigger {
     }
 
     public final void startPlayingLore(EntityPlayer entityPlayer) {
-        if (LoreStatusTracker.getStatusTracker(entityPlayer).hasBeenRead(loreIdent))
+        if (hasBeenRead(entityPlayer))
             return;
 
         Lore lore = LoreRegistry.getLore(loreIdent);
 
-        if (!lore.repeat) {
-            LoreStatusTracker.getStatusTracker(entityPlayer).markAsRead(loreIdent);
-        }
+        if (!lore.repeat)
+            markAsRead(entityPlayer);
 
         PacketHandler.INSTANCE.sendTo(new S01PlayLoreAudio(loreIdent), (EntityPlayerMP) entityPlayer);
+    }
+
+    public final boolean hasBeenRead(EntityPlayer entityPlayer) {
+        return LoreStatusTracker.getStatusTracker(entityPlayer).hasBeenRead(loreIdent);
     }
 
     public final void markAsRead(EntityPlayer entityPlayer) {
