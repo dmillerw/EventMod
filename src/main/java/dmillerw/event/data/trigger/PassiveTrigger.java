@@ -12,7 +12,7 @@ public abstract class PassiveTrigger extends Trigger {
         this.type = type;
     }
 
-    public abstract void update(Object ... data);
+    public abstract void update(Object data);
 
     public static enum Type {
         PLAYER,

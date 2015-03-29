@@ -46,7 +46,7 @@ public class TriggerRegistry {
         registeredTriggers.put(tag, set);
     }
 
-    public static void fireTrigger(String name, PassiveTrigger.Type type, Object ... data) {
+    public static void fireTrigger(PassiveTrigger.Type type, Object data) {
         for (Set<Trigger> set : registeredTriggers.values()) {
             for (Trigger trigger : set) {
                 if (trigger instanceof PassiveTrigger && ((PassiveTrigger) trigger).type == type) {
@@ -56,7 +56,7 @@ public class TriggerRegistry {
         }
     }
 
-    public static void fireTrigger(String name, Event event) {
+    public static void fireTrigger(Event event) {
         for (Set<Trigger> set : registeredTriggers.values()) {
             for (Trigger trigger : set) {
                 if (trigger instanceof EventTrigger<?> && ((EventTrigger) trigger).clazz.isAssignableFrom(event.getClass())) {

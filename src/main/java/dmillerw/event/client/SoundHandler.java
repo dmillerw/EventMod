@@ -58,6 +58,10 @@ public class SoundHandler {
     }
 
     public void play(String name) {
+        if (name.contains(".")) {
+            name = name.substring(0, name.lastIndexOf("."));
+        }
+
         if (!nowPlaying.isEmpty()) {
             stop();
         }

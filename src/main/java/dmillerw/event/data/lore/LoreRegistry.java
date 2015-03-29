@@ -3,11 +3,16 @@ package dmillerw.event.data.lore;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
+import dmillerw.event.EventMod;
 import dmillerw.event.data.trigger.Trigger;
 import dmillerw.event.data.trigger.TriggerRegistry;
 import dmillerw.event.data.trigger.json.TriggerDeserializer;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -30,30 +35,43 @@ public class LoreRegistry {
     }
 
     public static void loadFile(File file) {
-//        try {
-            Lore lore = gson.fromJson("" +
-                    "{\n" +
-                    "        \"title\": \"Title\",\n" +
-                    "        \"lore\": \"lore1.txt\",\n" +
-                    "        \"sound\": \"sound1.txt\",\n" +
-                    "        \n" +
-                    "        \"trigger\": {\n" +
-                    "                \"type\": \"RANGE\",\n" +
-                    "                \"coordinate\": [160, 5, -1689, 165, 10, -1679],\n" +
-                    "                \"range\": 5\n" +
-                    "        }\n" +
-                    "}", Lore.class);
-//            Lore lore = gson.fromJson(new FileReader(file), Lore.class);
+        if (file == null)
+            return;
 
-            Trigger trigger = lore.trigger;
-            trigger.loreIdent = lore.getIdent();
+        try {
+            boolean errored = false;
+            LoreContainer loreContainer = gson.fromJson(new FileReader(file), LoreContainer.class);
+
+            // Sanity checks
+            File text = new File(EventMod.textFolder, loreContainer.textPath);
+            if (!text.exists() || !text.isFile()) {
+                error(file, "Specified text file couldn't be found (" + loreContainer.textPath + ")");
+                errored = true;
+            }
+
+            if (FMLCommonHandler.instance().getSide().isClient()) {
+                File audio = new File(EventMod.audioFolder, loreContainer.audioPath);
+                if (!audio.exists() || !audio.isFile()) {
+                    errored = true;
+                    error(file, "Specified audio file couldn't be found (" + loreContainer.audioPath + ")");
+                }
+            }
+
+            if (errored) {
+                return;
+            }
+
+            Trigger trigger = loreContainer.trigger;
+            trigger.setLoreIdent(loreContainer.getIdent());
             TriggerRegistry.registerTrigger(trigger);
 
-            lore.trigger = null;
+            loreMap.put(loreContainer.getIdent(), Lore.fromContainer(loreContainer));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
-            loreMap.put(lore.getIdent(), lore);
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
+    private static void error(File file, String msg) {
+        FMLLog.warning("[EventMod]: Failed to load file '" + file.getName() + "'. " + msg);
     }
 }

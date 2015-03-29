@@ -1,16 +1,26 @@
 package dmillerw.event;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import dmillerw.event.client.SoundHandler;
 import dmillerw.event.data.lore.LoreRegistry;
+import dmillerw.event.event.EventHandler;
+import dmillerw.event.lib.ExtensionFilter;
+import dmillerw.event.network.PacketHandler;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.io.File;
 
 /**
  * @author dmillerw
  */
-@Mod(modid = "EventMod", name = "EventMod", version = "%MOD_VERSION%")
+@Mod(modid = EventMod.ID, name = EventMod.NAME, version = EventMod.VERSION)
 public class EventMod {
+
+    public static final String ID = "EventMod";
+    public static final String NAME = "EventMod";
+    public static final String VERSION = "%MOD_VERSION%";
 
     public static File rootFolder;
     public static File textFolder;
@@ -18,10 +28,27 @@ public class EventMod {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        rootFolder = new File(event.getModConfigurationDirectory(), "EventMod");
-        textFolder = new File(rootFolder, "text");
-        audioFolder = new File(rootFolder, "audio");
+        rootFolder = newDir(new File(event.getModConfigurationDirectory(), "EventMod"));
+        textFolder = newDir(new File(rootFolder, "text"));
+        audioFolder = newDir(new File(rootFolder, "audio"));
 
-        LoreRegistry.loadFile(null);
+        for (File file : rootFolder.listFiles(ExtensionFilter.JSON)) {
+            LoreRegistry.loadFile(file);
+        }
+
+        MinecraftForge.EVENT_BUS.register(EventHandler.INSTANCE);
+        FMLCommonHandler.instance().bus().register(EventHandler.INSTANCE);
+
+        MinecraftForge.EVENT_BUS.register(SoundHandler.INSTANCE);
+        FMLCommonHandler.instance().bus().register(SoundHandler.INSTANCE);
+
+        PacketHandler.initialize();
+    }
+
+    private File newDir(File dir) {
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+        return dir;
     }
 }
