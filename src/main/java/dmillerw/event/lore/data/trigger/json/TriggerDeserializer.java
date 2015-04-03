@@ -1,8 +1,8 @@
-package dmillerw.event.data.trigger.json;
+package dmillerw.event.lore.data.trigger.json;
 
 import com.google.gson.*;
-import dmillerw.event.data.trigger.Trigger;
-import dmillerw.event.data.trigger.TriggerRegistry;
+import dmillerw.event.lore.data.trigger.Trigger;
+import dmillerw.event.lore.data.trigger.TriggerRegistry;
 
 import java.lang.reflect.Type;
 

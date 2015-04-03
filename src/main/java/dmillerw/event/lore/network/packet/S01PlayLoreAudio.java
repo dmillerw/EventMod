@@ -1,10 +1,10 @@
-package dmillerw.event.network.packet;
+package dmillerw.event.lore.network.packet;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import dmillerw.event.client.SoundHandler;
-import dmillerw.event.data.lore.LoreRegistry;
+import dmillerw.event.lore.client.SoundHandler;
+import dmillerw.event.lore.data.lore.LoreRegistry;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.PacketBuffer;
 

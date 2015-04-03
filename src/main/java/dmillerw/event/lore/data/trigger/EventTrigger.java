@@ -1,4 +1,4 @@
-package dmillerw.event.data.trigger;
+package dmillerw.event.lore.data.trigger;
 
 /**
  * @author dmillerw

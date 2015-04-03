@@ -1,4 +1,4 @@
-package dmillerw.event.client;
+package dmillerw.event.lore.client;
 
 import com.google.common.collect.Sets;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;

@@ -1,4 +1,4 @@
-package dmillerw.event.data.trigger;
+package dmillerw.event.lore.data.trigger;
 
 /**
  * Passive triggers are simply called upon once per tick, depending on their type

@@ -1,8 +1,8 @@
-package dmillerw.event.data.trigger.impl;
+package dmillerw.event.lore.data.trigger.impl;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import dmillerw.event.data.trigger.PassiveTrigger;
+import dmillerw.event.lore.data.trigger.PassiveTrigger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Vec3;
 
@@ -29,7 +29,6 @@ public class TriggerRange extends PassiveTrigger {
     public void update(Object data) {
         EntityPlayer player = (EntityPlayer) data;
         double dist = coordinate.distanceTo(player.getPosition(1F));
-        System.out.println(dist);
         if (dist <= range) {
             startPlayingLore(player);
         }

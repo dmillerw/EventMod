@@ -1,10 +1,10 @@
-package dmillerw.event.data.trigger;
+package dmillerw.event.lore.data.trigger;
 
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import cpw.mods.fml.common.eventhandler.Event;
-import dmillerw.event.data.trigger.impl.TriggerRange;
+import dmillerw.event.lore.data.trigger.impl.TriggerRange;
 
 import java.util.Map;
 import java.util.Set;

@@ -1,7 +1,7 @@
-package dmillerw.event.data.lore;
+package dmillerw.event.lore.data.lore;
 
 import com.google.gson.annotations.SerializedName;
-import dmillerw.event.data.trigger.Trigger;
+import dmillerw.event.lore.data.trigger.Trigger;
 
 /**
  * @author dmillerw

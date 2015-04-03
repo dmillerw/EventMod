@@ -1,4 +1,4 @@
-package dmillerw.event.data.lore;
+package dmillerw.event.lore.data.lore;
 
 import dmillerw.event.EventMod;
 

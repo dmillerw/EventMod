@@ -1,11 +1,11 @@
-package dmillerw.event.data.trigger;
+package dmillerw.event.lore.data.trigger;
 
 import com.google.gson.JsonObject;
-import dmillerw.event.data.lore.Lore;
-import dmillerw.event.data.lore.LoreRegistry;
-import dmillerw.event.data.lore.LoreStatusTracker;
-import dmillerw.event.network.PacketHandler;
-import dmillerw.event.network.packet.S01PlayLoreAudio;
+import dmillerw.event.lore.data.lore.Lore;
+import dmillerw.event.lore.data.lore.LoreRegistry;
+import dmillerw.event.lore.data.lore.LoreStatusTracker;
+import dmillerw.event.lore.network.PacketHandler;
+import dmillerw.event.lore.network.packet.S01PlayLoreAudio;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 

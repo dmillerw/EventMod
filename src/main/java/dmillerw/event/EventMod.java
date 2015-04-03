@@ -3,11 +3,15 @@ package dmillerw.event;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import dmillerw.event.client.SoundHandler;
-import dmillerw.event.data.lore.LoreRegistry;
+import dmillerw.event.cinematic.client.ClientTickHandler;
+import dmillerw.event.cinematic.command.CommandPlay;
+import dmillerw.event.cinematic.command.CommandStop;
+import dmillerw.event.lore.client.SoundHandler;
+import dmillerw.event.lore.data.lore.LoreRegistry;
 import dmillerw.event.event.EventHandler;
 import dmillerw.event.lib.ExtensionFilter;
-import dmillerw.event.network.PacketHandler;
+import dmillerw.event.lore.network.PacketHandler;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.io.File;
@@ -35,6 +39,11 @@ public class EventMod {
         for (File file : rootFolder.listFiles(ExtensionFilter.JSON)) {
             LoreRegistry.loadFile(file);
         }
+
+        FMLCommonHandler.instance().bus().register(new ClientTickHandler());
+
+        ClientCommandHandler.instance.registerCommand(new CommandPlay());
+        ClientCommandHandler.instance.registerCommand(new CommandStop());
 
         MinecraftForge.EVENT_BUS.register(EventHandler.INSTANCE);
         FMLCommonHandler.instance().bus().register(EventHandler.INSTANCE);
