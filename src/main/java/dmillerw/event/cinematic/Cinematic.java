@@ -29,7 +29,7 @@ public class Cinematic {
             list.add(p);
         }
 
-        if (list == null || list.size() < 2) {
+        if (list.size() < 2) {
             throw new IllegalArgumentException("Cinematic must two or more points!");
         }
 
@@ -40,7 +40,14 @@ public class Cinematic {
     }
 
     public Cinematic(LinkedList<Point> points, int speed) {
+        if (points == null || points.size() < 2) {
+            throw new IllegalArgumentException("Cinematic must two or more points!");
+        }
 
+        this.points = points;
+        this.speed = speed;
+
+        reset();
     }
 
     public Cinematic loop() {
@@ -80,13 +87,18 @@ public class Cinematic {
         // Consider moving this to a method with an EntityCamera param
         final float lerp = MathFX.twoIntToFloat(currentTickTime, speed);
 
-        float lerpX = MathFX.lerp(currentPoint.x, nextPoint.x, lerp);
-        float lerpY = MathFX.lerp(currentPoint.y, nextPoint.y, lerp);
-        float lerpZ = MathFX.lerp(currentPoint.z, nextPoint.z, lerp);
+        double lerpX = MathFX.lerpD(currentPoint.x, nextPoint.x, lerp);
+        double lerpY = MathFX.lerpD(currentPoint.y, nextPoint.y, lerp);
+        double lerpZ = MathFX.lerpD(currentPoint.z, nextPoint.z, lerp);
 
-        float lerpPitch = MathFX.lerp(currentPoint.pitch, nextPoint.pitch, lerp);
-        float lerpYaw = MathFX.lerp(currentPoint.yaw, nextPoint.yaw, lerp);
+        float lerpPitch = MathFX.lerpF(currentPoint.pitch, nextPoint.pitch, lerp);
+        float lerpYaw = MathFX.lerpF(currentPoint.yaw, nextPoint.yaw, lerp);
 
         EntityCamera.moveCamera(lerpX, lerpY, lerpZ, lerpPitch, lerpYaw);
+    }
+
+    @Override
+    public String toString() {
+        return "{points: " + points.toString() + ", speed: " + speed + ", loop: " + loop + "}";
     }
 }

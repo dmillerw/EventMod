@@ -23,12 +23,16 @@ public class MathFX {
     }
 
 	/* FX */
-	public static float lerp(float start, float end, float value) {
+	public static float lerpF(float start, float end, float value) {
 		return (start + (value * (end - start)));
 	}
 
+    public static double lerpD(double start, double end, float value) {
+        return (start + (value * (end - start)));
+    }
+
 	public static float sinerp(float start, float end, float value) {
-		return lerp(start, end, (float) Math.sin(value * Math.PI * 0.5F));
+		return lerpF(start, end, (float) Math.sin(value * Math.PI * 0.5F));
 	}
 
 	public static float berp(float start, float end, float value) {

@@ -3,9 +3,9 @@ package dmillerw.event;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import dmillerw.event.cinematic.client.ClientEventHandler;
 import dmillerw.event.cinematic.client.ClientTickHandler;
-import dmillerw.event.cinematic.command.CommandPlay;
-import dmillerw.event.cinematic.command.CommandStop;
+import dmillerw.event.cinematic.client.command.CommandCinematic;
 import dmillerw.event.lore.client.SoundHandler;
 import dmillerw.event.lore.data.lore.LoreRegistry;
 import dmillerw.event.event.EventHandler;
@@ -40,10 +40,11 @@ public class EventMod {
             LoreRegistry.loadFile(file);
         }
 
+        //TODO CLEANUP THIS SHIT
         FMLCommonHandler.instance().bus().register(new ClientTickHandler());
+        MinecraftForge.EVENT_BUS.register(new ClientEventHandler());
 
-        ClientCommandHandler.instance.registerCommand(new CommandPlay());
-        ClientCommandHandler.instance.registerCommand(new CommandStop());
+        ClientCommandHandler.instance.registerCommand(new CommandCinematic());
 
         MinecraftForge.EVENT_BUS.register(EventHandler.INSTANCE);
         FMLCommonHandler.instance().bus().register(EventHandler.INSTANCE);

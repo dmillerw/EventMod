@@ -1,14 +1,12 @@
 package dmillerw.event.lore.data.lore;
 
 import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import dmillerw.event.EventMod;
+import dmillerw.event.lib.JsonLib;
 import dmillerw.event.lore.data.trigger.Trigger;
 import dmillerw.event.lore.data.trigger.TriggerRegistry;
-import dmillerw.event.lore.data.trigger.json.TriggerDeserializer;
 
 import java.io.File;
 import java.io.FileReader;
@@ -19,14 +17,6 @@ import java.util.Map;
  * @author dmillerw
  */
 public class LoreRegistry {
-
-    private static Gson gson;
-
-    static {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
-        gson = gsonBuilder.create();
-    }
 
     private static Map<String, Lore> loreMap = Maps.newHashMap();
 
@@ -40,7 +30,7 @@ public class LoreRegistry {
 
         try {
             boolean errored = false;
-            LoreContainer loreContainer = gson.fromJson(new FileReader(file), LoreContainer.class);
+            LoreContainer loreContainer = JsonLib.gson().fromJson(new FileReader(file), LoreContainer.class);
 
             // Sanity checks
             File text = new File(EventMod.textFolder, loreContainer.textPath);
