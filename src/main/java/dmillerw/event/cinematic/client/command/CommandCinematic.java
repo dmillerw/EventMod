@@ -4,6 +4,7 @@ import dmillerw.event.cinematic.Cinematic;
 import dmillerw.event.cinematic.CinematicBuilder;
 import dmillerw.event.cinematic.Point;
 import dmillerw.event.cinematic.client.ClientTickHandler;
+import dmillerw.event.lib.JsonLib;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
@@ -61,6 +62,8 @@ public class CommandCinematic extends CommandBase {
                 Cinematic cinematic = ClientTickHandler.currentBuildingCinematic.build();
                 ClientTickHandler.cinematicMap.put(name, cinematic);
                 ClientTickHandler.currentBuildingCinematic = null;
+
+                sender.addChatMessage(new ChatComponentText(JsonLib.gson().toJson(cinematic, Cinematic.class)));
             } else if (args[0].equals("stop")) {
                 ClientTickHandler.stopCinematic();
             } else if (args[0].equals("loop")) {

@@ -52,7 +52,7 @@ public class CinematicBuilder {
             throw new IllegalStateException("Cinematic must have at least two points!");
         }
 
-        Cinematic cinematic = new Cinematic(points, speed);
+        Cinematic cinematic = new Cinematic(name, points, speed);
         if (loop) {
             cinematic.loop();
         }
