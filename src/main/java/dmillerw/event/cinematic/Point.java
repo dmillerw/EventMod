@@ -10,6 +10,8 @@ public class Point {
 
     public static Point fromPlayer() {
         final EntityPlayer entityPlayer = Minecraft.getMinecraft().thePlayer;
+
+        //TODO Adjust yaw/pitch values
         return new Point(entityPlayer.posX, entityPlayer.posY, entityPlayer.posZ, entityPlayer.rotationYaw, entityPlayer.rotationPitch);
     }
 
