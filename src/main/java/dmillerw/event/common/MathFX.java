@@ -1,4 +1,4 @@
-package dmillerw.event.lib;
+package dmillerw.event.common;
 
 /**
  * Mostly pulled from Unity's Mathfx class

@@ -1,4 +1,4 @@
-package dmillerw.event.cinematic;
+package dmillerw.event.cinematic.data;
 
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;

@@ -1,4 +1,4 @@
-package dmillerw.event.lib;
+package dmillerw.event.common;
 
 import java.io.File;
 import java.io.FilenameFilter;

@@ -1,4 +1,4 @@
-package dmillerw.event.lore.network.packet;
+package dmillerw.event.lore.packet;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;

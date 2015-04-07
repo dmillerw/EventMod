@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import dmillerw.event.EventMod;
-import dmillerw.event.lib.JsonLib;
+import dmillerw.event.common.JsonLib;
 import dmillerw.event.lore.data.trigger.Trigger;
 import dmillerw.event.lore.data.trigger.TriggerRegistry;
 

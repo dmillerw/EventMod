@@ -1,10 +1,10 @@
-package dmillerw.event.lore.network;
+package dmillerw.event.common.network;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import dmillerw.event.EventMod;
-import dmillerw.event.lore.network.packet.S01PlayLoreAudio;
+import dmillerw.event.lore.packet.S01PlayLoreAudio;
 
 /**
  * @author dmillerw

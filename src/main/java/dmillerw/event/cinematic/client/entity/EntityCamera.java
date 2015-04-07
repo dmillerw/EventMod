@@ -1,4 +1,4 @@
-package dmillerw.event.cinematic.client;
+package dmillerw.event.cinematic.client.entity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

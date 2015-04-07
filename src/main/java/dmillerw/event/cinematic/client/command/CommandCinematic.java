@@ -1,10 +1,10 @@
 package dmillerw.event.cinematic.client.command;
 
-import dmillerw.event.cinematic.Cinematic;
-import dmillerw.event.cinematic.Point;
+import dmillerw.event.cinematic.data.Cinematic;
+import dmillerw.event.cinematic.data.Point;
 import dmillerw.event.cinematic.client.CinematicLoader;
-import dmillerw.event.cinematic.client.ClientTickHandler;
-import dmillerw.event.lib.JsonLib;
+import dmillerw.event.cinematic.client.handler.ClientTickHandler;
+import dmillerw.event.common.JsonLib;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;

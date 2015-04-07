@@ -1,4 +1,4 @@
-package dmillerw.event.cinematic.client;
+package dmillerw.event.cinematic.client.handler;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;

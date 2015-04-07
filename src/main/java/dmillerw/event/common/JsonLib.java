@@ -1,9 +1,9 @@
-package dmillerw.event.lib;
+package dmillerw.event.common;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dmillerw.event.cinematic.Cinematic;
-import dmillerw.event.cinematic.Point;
+import dmillerw.event.cinematic.data.Cinematic;
+import dmillerw.event.cinematic.data.Point;
 import dmillerw.event.lore.data.trigger.Trigger;
 
 /**

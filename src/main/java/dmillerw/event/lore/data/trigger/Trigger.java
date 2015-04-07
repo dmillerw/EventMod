@@ -4,8 +4,8 @@ import com.google.gson.*;
 import dmillerw.event.lore.data.lore.Lore;
 import dmillerw.event.lore.data.lore.LoreRegistry;
 import dmillerw.event.lore.data.lore.LoreStatusTracker;
-import dmillerw.event.lore.network.PacketHandler;
-import dmillerw.event.lore.network.packet.S01PlayLoreAudio;
+import dmillerw.event.common.network.PacketHandler;
+import dmillerw.event.lore.packet.S01PlayLoreAudio;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 

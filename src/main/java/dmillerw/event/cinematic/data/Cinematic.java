@@ -1,10 +1,10 @@
-package dmillerw.event.cinematic;
+package dmillerw.event.cinematic.data;
 
 import com.google.common.collect.Lists;
 import com.google.gson.*;
-import dmillerw.event.cinematic.client.ClientTickHandler;
-import dmillerw.event.cinematic.client.EntityCamera;
-import dmillerw.event.lib.MathFX;
+import dmillerw.event.cinematic.client.handler.ClientTickHandler;
+import dmillerw.event.cinematic.client.entity.EntityCamera;
+import dmillerw.event.common.MathFX;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;

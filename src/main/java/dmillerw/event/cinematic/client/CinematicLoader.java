@@ -3,8 +3,8 @@ package dmillerw.event.cinematic.client;
 import com.google.common.collect.Maps;
 import com.google.common.io.Files;
 import dmillerw.event.EventMod;
-import dmillerw.event.cinematic.Cinematic;
-import dmillerw.event.lib.JsonLib;
+import dmillerw.event.cinematic.data.Cinematic;
+import dmillerw.event.common.JsonLib;
 
 import java.io.File;
 import java.io.FileReader;

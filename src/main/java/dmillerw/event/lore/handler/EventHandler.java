@@ -1,4 +1,4 @@
-package dmillerw.event.event;
+package dmillerw.event.lore.handler;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;

@@ -1,8 +1,9 @@
-package dmillerw.event.cinematic.client;
+package dmillerw.event.cinematic.client.handler;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import dmillerw.event.cinematic.Cinematic;
+import dmillerw.event.cinematic.data.Cinematic;
+import dmillerw.event.cinematic.client.entity.EntityCamera;
 
 /**
  * @author dmillerw
