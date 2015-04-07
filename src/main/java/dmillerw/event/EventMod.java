@@ -3,6 +3,7 @@ package dmillerw.event;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import dmillerw.event.cinematic.client.CinematicLoader;
 import dmillerw.event.cinematic.client.ClientEventHandler;
 import dmillerw.event.cinematic.client.ClientTickHandler;
 import dmillerw.event.cinematic.client.command.CommandCinematic;
@@ -27,17 +28,29 @@ public class EventMod {
     public static final String VERSION = "%MOD_VERSION%";
 
     public static File rootFolder;
+
+    // Lore
+    public static File loreFolder;
     public static File textFolder;
     public static File audioFolder;
+
+    // Cinematic
+    public static File cinematicFolder;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         rootFolder = newDir(new File(event.getModConfigurationDirectory(), "EventMod"));
-        textFolder = newDir(new File(rootFolder, "text"));
-        audioFolder = newDir(new File(rootFolder, "audio"));
+        loreFolder = newDir(new File(rootFolder, "lore"));
+        textFolder = newDir(new File(loreFolder, "text"));
+        audioFolder = newDir(new File(loreFolder, "audio"));
+        cinematicFolder = newDir(new File(rootFolder, "cinematic"));
 
-        for (File file : rootFolder.listFiles(ExtensionFilter.JSON)) {
+        for (File file : loreFolder.listFiles(ExtensionFilter.JSON)) {
             LoreRegistry.loadFile(file);
+        }
+
+        for (File file : cinematicFolder.listFiles(ExtensionFilter.JSON)) {
+            CinematicLoader.loadFile(file);
         }
 
         //TODO CLEANUP THIS SHIT

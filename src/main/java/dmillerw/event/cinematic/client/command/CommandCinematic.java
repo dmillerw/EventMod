@@ -1,8 +1,8 @@
 package dmillerw.event.cinematic.client.command;
 
 import dmillerw.event.cinematic.Cinematic;
-import dmillerw.event.cinematic.CinematicBuilder;
 import dmillerw.event.cinematic.Point;
+import dmillerw.event.cinematic.client.CinematicLoader;
 import dmillerw.event.cinematic.client.ClientTickHandler;
 import dmillerw.event.lib.JsonLib;
 import net.minecraft.command.CommandBase;
@@ -58,9 +58,8 @@ public class CommandCinematic extends CommandBase {
                     return;
                 }
 
-                final String name = ClientTickHandler.currentBuildingCinematic.name;
                 Cinematic cinematic = ClientTickHandler.currentBuildingCinematic.build();
-                ClientTickHandler.cinematicMap.put(name, cinematic);
+                CinematicLoader.save(cinematic);
                 ClientTickHandler.currentBuildingCinematic = null;
 
                 sender.addChatMessage(new ChatComponentText(JsonLib.gson().toJson(cinematic, Cinematic.class)));
@@ -75,10 +74,10 @@ public class CommandCinematic extends CommandBase {
             }
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("new")) {
-                ClientTickHandler.currentBuildingCinematic = new CinematicBuilder();
+                ClientTickHandler.currentBuildingCinematic = new Cinematic.Builder();
                 ClientTickHandler.currentBuildingCinematic.setName(args[1]);
             } else if (args[0].equals("play")) {
-                final Cinematic cinematic = ClientTickHandler.cinematicMap.get(args[1]);
+                final Cinematic cinematic = CinematicLoader.get(args[1]);
                 if (cinematic == null) {
                     error(sender, "Could not find a cinematic with the name '" + args[1] + "'");
                     return;

@@ -1,7 +1,6 @@
 package dmillerw.event.cinematic.client;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -29,7 +28,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public void onRenderPlayer(RenderPlayerEvent event) {
         if (ClientTickHandler.isCinematicPlaying()) {
-            if (event.entityPlayer.getGameProfile().getId() == Minecraft.getMinecraft().thePlayer.getGameProfile().getId())
+//            if (event.entityPlayer.getGameProfile().getId() == Minecraft.getMinecraft().thePlayer.getGameProfile().getId())
                 event.setCanceled(true);
         }
     }

@@ -18,10 +18,6 @@ public class MathFX {
 		}
 	}
 
-    public static float twoIntToFloat(int current, int total) {
-        return (float)current / (float)total;
-    }
-
 	/* FX */
 	public static float lerpF(float start, float end, float value) {
 		return (start + (value * (end - start)));

@@ -82,16 +82,17 @@ public class Cinematic {
                     nextPoint = points.get(0);
                 } else {
                     ClientTickHandler.stopCinematic();
-                    return;
                 }
             } else {
                 currentPoint = points.get(currentPointIndex);
                 nextPoint = points.get(currentPointIndex + 1);
             }
         }
+    }
 
+    public void tick(float renderTickTime) {
         // Consider moving this to a method with an EntityCamera param
-        final float lerp = MathFX.twoIntToFloat(currentTickTime, speed);
+        final float lerp = (float)(currentTickTime + renderTickTime) / (float)speed;
 
         double lerpX = MathFX.lerpD(currentPoint.x, nextPoint.x, lerp);
         double lerpY = MathFX.lerpD(currentPoint.y, nextPoint.y, lerp);
@@ -141,6 +142,58 @@ public class Cinematic {
                 cinematic.loop();
             }
 
+            return cinematic;
+        }
+    }
+
+    public static class Builder {
+
+        public String name;
+        public LinkedList<Point> points;
+        public int speed = 0;
+        public boolean loop = false;
+
+        public Builder() {
+            this.points = Lists.newLinkedList();
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setSpeed(int speed) {
+            this.speed = speed;
+            return this;
+        }
+
+        public Builder loop() {
+            this.loop = true;
+            return this;
+        }
+
+        public Builder addPoint(Point point) {
+            this.points.add(point);
+            return this;
+        }
+
+        public Cinematic build() {
+            if (name == null || name.isEmpty()) {
+                throw new IllegalStateException("Cinematic name cannot be null!");
+            }
+
+            if (speed <= 0) {
+                throw new IllegalStateException("Cinematic speed must be greater than zero!");
+            }
+
+            if (points.size() < 2) {
+                throw new IllegalStateException("Cinematic must have at least two points!");
+            }
+
+            Cinematic cinematic = new Cinematic(name, points, speed);
+            if (loop) {
+                cinematic.loop();
+            }
             return cinematic;
         }
     }

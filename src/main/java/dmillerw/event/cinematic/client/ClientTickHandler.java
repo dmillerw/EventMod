@@ -1,12 +1,8 @@
 package dmillerw.event.cinematic.client;
 
-import com.google.common.collect.Maps;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import dmillerw.event.cinematic.Cinematic;
-import dmillerw.event.cinematic.CinematicBuilder;
-
-import java.util.Map;
 
 /**
  * @author dmillerw
@@ -14,9 +10,7 @@ import java.util.Map;
 public class ClientTickHandler {
 
     public static int totalTickTime = 0;
-    public static CinematicBuilder currentBuildingCinematic;
-
-    public static Map<String, Cinematic> cinematicMap = Maps.newHashMap();
+    public static Cinematic.Builder currentBuildingCinematic;
 
     private static Cinematic currentCinematic;
 
@@ -44,6 +38,16 @@ public class ClientTickHandler {
 
         if (currentCinematic != null) {
             currentCinematic.tick();
+        }
+    }
+
+    @SubscribeEvent
+    public void onRenderTick(TickEvent.RenderTickEvent event) {
+        if (event.phase == TickEvent.Phase.START)
+            return;
+
+        if (currentCinematic != null) {
+            currentCinematic.tick(event.renderTickTime);
         }
     }
 }
