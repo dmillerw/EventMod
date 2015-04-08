@@ -2,9 +2,11 @@ package dmillerw.event.cinematic.data;
 
 import com.google.common.collect.Lists;
 import com.google.gson.*;
-import dmillerw.event.cinematic.client.handler.ClientTickHandler;
 import dmillerw.event.cinematic.client.entity.EntityCamera;
+import dmillerw.event.cinematic.client.handler.ClientTickHandler;
 import dmillerw.event.common.MathFX;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;
@@ -20,6 +22,7 @@ public class Cinematic {
     public int speed; // Ticks between points. likely a high value
 
     public boolean loop = false;
+    public boolean hidePlayer = false;
 
     private int currentTickTime = 0;
     private int currentPointIndex;
@@ -61,6 +64,11 @@ public class Cinematic {
         return this;
     }
 
+    public Cinematic hidePlayer() {
+        this.hidePlayer = true;
+        return this;
+    }
+
     public void reset() {
         currentTickTime = 0;
         currentPointIndex = 0;
@@ -91,6 +99,8 @@ public class Cinematic {
     }
 
     public void tick(float renderTickTime) {
+        final EntityPlayer entityPlayer = Minecraft.getMinecraft().thePlayer;
+
         // Consider moving this to a method with an EntityCamera param
         final float lerp = (float)(currentTickTime + renderTickTime) / (float)speed;
 
@@ -101,7 +111,7 @@ public class Cinematic {
         float lerpPitch = MathFX.lerpF(currentPoint.pitch, nextPoint.pitch, lerp);
         float lerpYaw = MathFX.lerpF(currentPoint.yaw, nextPoint.yaw, lerp);
 
-        EntityCamera.moveCamera(lerpX, lerpY, lerpZ, lerpPitch, lerpYaw);
+        EntityCamera.moveCamera(lerpX, lerpY - entityPlayer.height + entityPlayer.getDefaultEyeHeight() * 2, lerpZ, lerpPitch, lerpYaw);
     }
 
     @Override
@@ -118,6 +128,7 @@ public class Cinematic {
             jsonObject.add("name", new JsonPrimitive(src.name));
             jsonObject.add("speed", new JsonPrimitive(src.speed));
             jsonObject.add("loop", new JsonPrimitive(src.loop));
+            jsonObject.add("hide_player", new JsonPrimitive(src.hidePlayer));
 
             jsonObject.add("points", context.serialize(src.points));
 
@@ -134,12 +145,16 @@ public class Cinematic {
             final String name = jsonObject.get("name").getAsString();
             final int speed = jsonObject.get("speed").getAsInt();
             final boolean loop = jsonObject.get("loop").getAsBoolean();
+            final boolean hidePlayer = jsonObject.get("hide_player").getAsBoolean();
 
             final Point[] points = context.deserialize(jsonObject.get("points"), Point[].class);
 
             Cinematic cinematic = new Cinematic(name, points, speed);
             if (loop) {
                 cinematic.loop();
+            }
+            if (hidePlayer) {
+                cinematic.hidePlayer();
             }
 
             return cinematic;
@@ -152,6 +167,7 @@ public class Cinematic {
         public LinkedList<Point> points;
         public int speed = 0;
         public boolean loop = false;
+        public boolean hidePlayer = false;
 
         public Builder() {
             this.points = Lists.newLinkedList();
@@ -169,6 +185,11 @@ public class Cinematic {
 
         public Builder loop() {
             this.loop = true;
+            return this;
+        }
+
+        public Builder hidePlayer() {
+            this.hidePlayer = true;
             return this;
         }
 

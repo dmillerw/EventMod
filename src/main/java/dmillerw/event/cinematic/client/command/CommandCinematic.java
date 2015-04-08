@@ -71,9 +71,20 @@ public class CommandCinematic extends CommandBase {
                 }
 
                 ClientTickHandler.currentBuildingCinematic.loop();
+            }} else if (args[0].equals("hide_player")) {
+            if (!check(sender, "You must create a new cinematic first")) {
+                return;
             }
+
+            ClientTickHandler.currentBuildingCinematic.hidePlayer();
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("new")) {
+                final Cinematic cinematic = CinematicLoader.get(args[1]);
+                if (cinematic != null) {
+                    error(sender, "Cannot make cinematic. Cinematic with name '" + args[1] + "' already exists");
+                    return;
+                }
+
                 ClientTickHandler.currentBuildingCinematic = new Cinematic.Builder();
                 ClientTickHandler.currentBuildingCinematic.setName(args[1]);
             } else if (args[0].equals("play")) {
@@ -90,6 +101,14 @@ public class CommandCinematic extends CommandBase {
                 }
 
                 ClientTickHandler.currentBuildingCinematic.setSpeed(Integer.parseInt(args[1]));
+            } else if (args[0].equals("display")) {
+                final Cinematic cinematic = CinematicLoader.get(args[1]);
+                if (cinematic == null) {
+                    error(sender, "Could not find a cinematic with the name '" + args[1] + "'");
+                    return;
+                }
+
+                ClientTickHandler.displayCinematic(cinematic);
             }
         }
     }

@@ -13,21 +13,34 @@ public class ClientTickHandler {
     public static int totalTickTime = 0;
     public static Cinematic.Builder currentBuildingCinematic;
 
-    private static Cinematic currentCinematic;
+    private static Cinematic currentlyPlaying;
+    private static Cinematic currentlyDisplayed;
 
     public static void startCinematic(Cinematic cinematic) {
-        currentCinematic = cinematic;
-        currentCinematic.reset();
+        currentlyPlaying = cinematic;
+        currentlyPlaying.reset();
         EntityCamera.createCamera();
     }
 
     public static void stopCinematic() {
-        currentCinematic = null;
+        currentlyPlaying = null;
         EntityCamera.destroyCamera();
     }
 
-    public static boolean isCinematicPlaying() {
-        return currentCinematic != null;
+    public static void displayCinematic(Cinematic cinematic) {
+        currentlyDisplayed = cinematic;
+    }
+
+    public static void clearDisplayedCinematic() {
+        currentlyDisplayed = null;
+    }
+
+    public static Cinematic getDisplayedCinematic() {
+        return currentlyDisplayed;
+    }
+
+    public static Cinematic getPlayingCinematic() {
+        return currentlyPlaying;
     }
 
     @SubscribeEvent
@@ -37,8 +50,8 @@ public class ClientTickHandler {
 
         totalTickTime++;
 
-        if (currentCinematic != null) {
-            currentCinematic.tick();
+        if (currentlyPlaying != null) {
+            currentlyPlaying.tick();
         }
     }
 
@@ -47,8 +60,8 @@ public class ClientTickHandler {
         if (event.phase == TickEvent.Phase.START)
             return;
 
-        if (currentCinematic != null) {
-            currentCinematic.tick(event.renderTickTime);
+        if (currentlyPlaying != null) {
+            currentlyPlaying.tick(event.renderTickTime);
         }
     }
 }
