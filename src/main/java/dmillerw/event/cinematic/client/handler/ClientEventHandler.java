@@ -81,4 +81,12 @@ public class ClientEventHandler {
             }
         }
     }
+
+    @SubscribeEvent
+    public void onRenderPlayerTag(RenderPlayerEvent.Specials event) {
+        final Cinematic cinematic = ClientTickHandler.getPlayingCinematic();
+        if (cinematic != null) {
+            event.setCanceled(true);
+        }
+    }
 }
