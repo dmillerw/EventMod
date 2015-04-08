@@ -20,6 +20,7 @@ public class Cinematic {
 
     public LinkedList<Point> points;
     public int speed; // Ticks between points. likely a high value
+    public int average; // Ticks between points. likely a high value
 
     public boolean loop = false;
     public boolean hidePlayer = false;
@@ -43,6 +44,7 @@ public class Cinematic {
         this.name = name;
         this.points = list;
         this.speed = speed;
+        this.average = (int)Math.floor((float)speed / (float)list.size());
 
         reset();
     }
@@ -55,6 +57,7 @@ public class Cinematic {
         this.name = name;
         this.points = points;
         this.speed = speed;
+        this.average = (int)Math.floor((float)speed / (float)points.size());
 
         reset();
     }
@@ -79,7 +82,7 @@ public class Cinematic {
     public void tick() {
         currentTickTime++;
 
-        if (currentTickTime >= speed) {
+        if (currentTickTime >= average) {
             currentPointIndex++;
             currentTickTime = 0;
 
@@ -102,7 +105,7 @@ public class Cinematic {
         final EntityPlayer entityPlayer = Minecraft.getMinecraft().thePlayer;
 
         // Consider moving this to a method with an EntityCamera param
-        final float lerp = (float)(currentTickTime + renderTickTime) / (float)speed;
+        final float lerp = (float)(currentTickTime + renderTickTime) / (float)average;
 
         double lerpX = MathFX.lerpD(currentPoint.x, nextPoint.x, lerp);
         double lerpY = MathFX.lerpD(currentPoint.y, nextPoint.y, lerp);
